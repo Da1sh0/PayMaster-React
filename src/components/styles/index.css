@@ -376,7 +376,7 @@ input[type=text]{background-image: url('../image/llave1.png');}
     align-items: center;
     justify-content: center; 
     position: relative;
-    margin: 0 0 30px 0;
+    margin: 20px;
 }
 
 .link::after {

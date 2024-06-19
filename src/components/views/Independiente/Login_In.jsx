@@ -3,7 +3,7 @@ import React from 'react';
 import logo from '../../image/logo2.png';
 
 
-function Login() {
+function Login_In() {
   return (
     <div className='body_inde'>
       <div className="contenedor_inde">
@@ -38,4 +38,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Login_In;

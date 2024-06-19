@@ -14,14 +14,14 @@ function Menu() {
         </div>
 
         <div className='menu'>
-          <Link className='opcion' to="/indepentiende/login">
+          <Link className='opcion' to="/indepentiente/login">
             <div className="opcion-background">
               <p className='boton'>Independiente</p>
               <p className='descripcion'>Trabajas por tu cuenta.</p>
             </div>
           </Link>
 
-          <Link className='opcion' to="/loginEmpresa">
+          <Link className='opcion' to="/indepentiente/login">
             <div className="opcion-background">
               <p className='boton'>Dependiente</p>
               <p className='descripcion'>Trabajas para una empresa.</p>
