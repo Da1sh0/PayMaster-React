@@ -26,8 +26,8 @@ function App() {
         {/* <Route path='/dependiente/login' element={<Login_In_Dependiente />} /> */}
         {/* CRUD */}
         <Route path='/ver' element={<Ver />} />
-        <Route path='/editar/:id' element={<Editar />} />
-        <Route path='/eliminar/:id' element={<Eliminar />} />
+        <Route path='/editar/:numero_identificacion' element={<Editar />} />
+        <Route path='/eliminar/:numero_identificacion' element={<Eliminar />} />
         <Route path='/crear' element={<Crear />} />
       </Routes>
     </Router>
