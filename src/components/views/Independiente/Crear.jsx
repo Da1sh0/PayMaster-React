@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Asegúrate de importar Link
+
 
 const Crear = () => {
     const [numeroIdentificacion, setNumeroIdentificacion] = useState("");
@@ -36,12 +38,12 @@ const Crear = () => {
         formData.append("imagen", imagen);
 
         try {
-            let res = await fetch("http://localhost:8000/usuarios/rest/usuariosrest/", {
+            let res = await fetch("http://127.0.0.1:8000/independientes/indeindependienterest/", {
                 method: "POST",
                 body: formData,
             });
-            const resJson = await res.json();
-            if (res.status === 200) {
+
+            if (res.ok) {
                 setNumeroIdentificacion("");
                 setPrimerNombre("");
                 setSegundoNombre("");
@@ -58,11 +60,12 @@ const Crear = () => {
                 setImagen(null);
                 setMessage("Usuario creado exitosamente");
             } else {
-                setMessage("Ha ocurrido un error");
+                const errorMessage = await res.text();
+                setMessage(`Error: ${errorMessage}`);
             }
         } catch (err) {
-            console.log(err);
-            setMessage("Ha ocurrido un error");
+            console.error("Error de conexión:", err);
+            setMessage("Ha ocurrido un error de conexión");
         }
     };
 
@@ -74,101 +77,66 @@ const Crear = () => {
         <>
             <h1>Formulario de Registro de Usuarios</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={numeroIdentificacion}
-                    placeholder="Número de Identificación"
-                    onChange={(e) => setNumeroIdentificacion(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={primerNombre}
-                    placeholder="Primer Nombre"
-                    onChange={(e) => setPrimerNombre(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={segundoNombre}
-                    placeholder="Segundo Nombre"
-                    onChange={(e) => setSegundoNombre(e.target.value)}
-                />
-                <input
-                    type="text"
-                    value={primerApellido}
-                    placeholder="Primer Apellido"
-                    onChange={(e) => setPrimerApellido(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={segundoApellido}
-                    placeholder="Segundo Apellido"
-                    onChange={(e) => setSegundoApellido(e.target.value)}
-                />
-                <input
-                    type="text"
-                    value={estadoCivil}
-                    placeholder="Estado Civil"
-                    onChange={(e) => setEstadoCivil(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={tipoDocumento}
-                    placeholder="Tipo de Documento"
-                    onChange={(e) => setTipoDocumento(e.target.value)}
-                    required
-                />
-                <input
-                    type="email"
-                    value={correo}
-                    placeholder="Correo Electrónico"
-                    onChange={(e) => setCorreo(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={celular}
-                    placeholder="Número de Celular"
-                    onChange={(e) => setCelular(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={genero}
-                    placeholder="Género"
-                    onChange={(e) => setGenero(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={fechaNacimiento}
-                    placeholder="Fecha de Nacimiento"
-                    onChange={(e) => setFechaNacimiento(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={fechaExpDocumento}
-                    placeholder="Fecha de Expedición del Documento"
-                    onChange={(e) => setFechaExpDocumento(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    value={fechaIngreso}
-                    placeholder="Fecha de Ingreso"
-                    onChange={(e) => setFechaIngreso(e.target.value)}
-                />
-                <input
-                    type="file"
-                    onChange={handleFileChange}
-                />
+
+                <label>Numero de documento </label>
+                <input type="text" value={numeroIdentificacion} placeholder="123456789" onChange={(e) => setNumeroIdentificacion(e.target.value)} required/>
+                
+                <label> Nombre Completo </label>
+                <input type="text"value={primerNombre}placeholder="Primer Nombre"onChange={(e) => setPrimerNombre(e.target.value)} required />
+                <input type="text" value={segundoNombre} placeholder="Segundo Nombre" onChange={(e) => setSegundoNombre(e.target.value)} />
+                <input type="text"  value={primerApellido} placeholder="Primer Apellido" onChange={(e) => setPrimerApellido(e.target.value)} required />
+                <input type="text" value={segundoApellido} placeholder="Segundo Apellido" onChange={(e) => setSegundoApellido(e.target.value)} />
+                
+                <label> Estado Civil </label>
+                <select value={estadoCivil} onChange={(e) => setEstadoCivil(e.target.value)} required >
+                    <option value="">Seleccione Estado Civil</option>
+                    <option value="SOLTERO">Soltero/a</option>
+                    <option value="CASADO">Casado/a</option>
+                    <option value="DIVORCIADO">Divorciado/a</option>
+                    <option value="VIUDO">Viudo/a</option>
+                </select>
+
+                <label> Tipo de Documento </label>
+                <select value={tipoDocumento} onChange={(e) => setTipoDocumento(e.target.value)} required>
+                    <option value="">Seleccione Tipo de Documento</option>
+                    <option value="Cc">Cédula de ciudadanía</option>
+                    <option value="Ce">Cédula de extranjería</option>
+                    <option value="Passport">Pasaporte</option>
+                </select>
+
+                <label> Correo Electronico </label>
+                <input type="email" value={correo} placeholder="ejemplo@ejemplo.com" onChange={(e) => setCorreo(e.target.value)} required />
+                
+                <label> celular </label>
+                <input type="tel" value={celular} placeholder="3123456789" onChange={(e) => setCelular(e.target.value)} required />
+                
+                <label> Gnero </label>
+                <select value={genero} onChange={(e) => setGenero(e.target.value)} required>
+                    <option value="">Seleccione Género</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="O">Otro</option>
+                    <option value="P">Prefiero no decir</option>
+                </select>
+
+                <label> Fecha de Nacimiento </label>
+                <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} required />
+
+                <label> Fecha de Expedicion del Documento </label>
+                <input type="date" value={fechaExpDocumento} onChange={(e) => setFechaExpDocumento(e.target.value)} required />
+                
+                <label> Fecha de Ingreso </label>
+                <input type="date" value={fechaIngreso} onChange={(e) => setFechaIngreso(e.target.value)} />
+
+                <label> Foto de Perfil </label>
+                <input type="file"onChange={handleFileChange}/>
+
                 <button type="submit">Crear Usuario</button>
+                
                 <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
+            <Link to={`/ver`}>Volver</Link>
+
         </>
     );
 };
