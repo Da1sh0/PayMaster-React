@@ -34,13 +34,17 @@ function Editar() {
   }, [numero_identificacion]);
 
   const handleChange = (e) => {
-    setUsuario({ ...usuario, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setUsuario(prevUsuario => ({
+      ...prevUsuario,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://127.0.0.1:8000/independientes/indeindependienterest/${numero_identificacion}/`, usuario);
+      await axios.put(`http://127.0.0.1:8000/independientes/indeindependienterest/${usuario.numero_identificacion}/`, usuario);
       navigate('/ver');
     } catch (error) {
       console.error('Error al actualizar el usuario:', error);
@@ -51,9 +55,8 @@ function Editar() {
     <div>
       <h1>Editar Usuario</h1>
       <form onSubmit={handleSubmit}>
-
         <label>Número de Identificación:</label>
-        <input type="text" name="numero_identificacion" value={usuario.numero_identificacion} onChange={handleChange}/>
+        <input type="text" name="numero_identificacion" value={usuario.numero_identificacion} readOnly />
 
         <label>Nombre Completo:</label>
         <input type="text" name="primer_nombre" value={usuario.primer_nombre} onChange={handleChange} />
@@ -62,7 +65,7 @@ function Editar() {
         <input type="text" name="segundo_apellido" value={usuario.segundo_apellido} onChange={handleChange} />
 
         <label>Estado Civil:</label>
-        <select value={usuario.estado_civil} onChange={handleChange} required >
+        <select name="estado_civil" value={usuario.estado_civil} onChange={handleChange} required>
           <option value="">Seleccione Estado Civil</option>
           <option value="SOLTERO">Soltero/a</option>
           <option value="CASADO">Casado/a</option>
@@ -71,7 +74,7 @@ function Editar() {
         </select>
 
         <label>Tipo de Documento:</label>
-        <select value={usuario.tipo_documento} onChange={handleChange} required >
+        <select name="tipo_documento" value={usuario.tipo_documento} onChange={handleChange} required>
           <option value="">Seleccione Tipo de Documento</option>
           <option value="Cc">Cédula de ciudadanía</option>
           <option value="Ce">Cédula de extranjería</option>
@@ -85,7 +88,7 @@ function Editar() {
         <input type="text" name="celular" value={usuario.celular} onChange={handleChange} />
 
         <label>Género:</label>
-        <select value={usuario.genero} onChange={handleChange} required>
+        <select name="genero" value={usuario.genero} onChange={handleChange} required>
           <option value="">Seleccione Género</option>
           <option value="M">Masculino</option>
           <option value="F">Femenino</option>
@@ -101,6 +104,8 @@ function Editar() {
 
         <label>Fecha de Ingreso:</label>
         <input type="date" name="fecha_ingreso" value={usuario.fecha_ingreso} onChange={handleChange} />
+
+        <input type="hidden" name="numero_identificacion" value={usuario.numero_identificacion} />
 
         <button type="submit">Guardar</button>
       </form>
