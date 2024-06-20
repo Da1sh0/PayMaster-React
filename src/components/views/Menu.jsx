@@ -14,7 +14,7 @@ function Menu() {
         </div>
 
         <div className='menu'>
-          <Link className='opcion' to="/indepentiente/login">
+          <Link className='opcion' to="/ver">
             <div className="opcion-background">
               <p className='boton'>Independiente</p>
               <p className='descripcion'>Trabajas por tu cuenta.</p>

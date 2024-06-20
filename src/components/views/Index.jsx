@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/index.css';
 
 import logo from '../image/logo2.png';
 import contador1 from '../image/contadorInicio.png';

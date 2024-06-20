@@ -4,7 +4,12 @@ import Index from './components/views/Index';
 import Menu from './components/views/Menu';
 // Independientes
 import Login_In from './components/views/Independiente/Login_In';
-import Datos from './components/views/Independiente/Datos';
+
+// CRUD
+import Ver from './components/views/Independiente/Ver';
+import Editar from './components/views/Independiente/Editar';
+import Crear from './components/views/Independiente/Crear';
+import Eliminar from './components/views/Independiente/Eliminar';
 
 // Dependientes
 // import Login_In_Dependiente from './components/views/Dependiente/Login_In';
@@ -17,9 +22,13 @@ function App() {
         <Route path='/menu' element={<Menu />} />
         {/* Independientes */}
         <Route path='/independiente/login' element={<Login_In />} />
-        <Route path='/datos' element={<Datos />} />
         {/* Dependientes */}
         {/* <Route path='/dependiente/login' element={<Login_In_Dependiente />} /> */}
+        {/* CRUD */}
+        <Route path='/ver' element={<Ver />} />
+        <Route path='/editar/:id' element={<Editar />} />
+        <Route path='/eliminar/:id' element={<Eliminar />} />
+        <Route path='/crear' element={<Crear />} />
       </Routes>
     </Router>
   );

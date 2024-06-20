@@ -19,11 +19,11 @@ function Login_In() {
         <div className="login">
           <p id="titulo">Iniciar sesión</p>
           <form className="formulario">
-            <label htmlFor="id_numero_identificacion">Número de identificación:</label>
-            <input type="number" id="id_numero_identificacion" name="numero_identificacion" required />
+            <label className='label_login_inde' htmlFor="id_numero_identificacion">Número de identificación:</label>
+            <input className='input_login_inde' type="number" id="id_numero_identificacion" name="numero_identificacion" required />
 
-            <label htmlFor="id_contrasena">Contraseña:</label>
-            <input type="password" id="id_contrasena" name="contrasena" required />
+            <label className='label_login_inde' htmlFor="id_contrasena">Contraseña:</label>
+            <input className='input_login_inde' type="password" id="id_contrasena" name="contrasena" required />
 
             <div className="button">
               <button className="boton_inde" type="submit">Iniciar sesión</button>
