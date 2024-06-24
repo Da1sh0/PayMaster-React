@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+
 
 const Eliminar = () => {
     const { numero_identificacion } = useParams();
@@ -35,21 +36,18 @@ const Eliminar = () => {
     };
 
     return (
-        <>
-            <h1>Eliminar Usuario</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={usuario.numero_identificacion} // Mostramos el número de identificación del usuario
-                    placeholder="ID de Usuario a Eliminar"
-                    readOnly // Hacemos el input de solo lectura para no permitir edición
-                    required
-                />
-                <button type="submit">Eliminar Usuario</button>
-                <div className="message">{message ? <p>{message}</p> : null}</div>
-            </form>
-            <button onClick={() => window.location.href = "/ver"}>Volver a Ver Usuarios</button>
-        </>
+        <div className='body_menu'>
+            <div className='contenedor_ejustable'>
+                <p id='titulo'>Eliminar Usuario</p>
+                <form className='form' onSubmit={handleSubmit}>
+                    <input type="text" value={usuario.numero_identificacion} placeholder="ID de Usuario a Eliminar" readOnly required />
+                    <button type="submit">Eliminar Usuario</button>
+                    <div className="message">{message ? <p>{message}</p> : null}</div>
+                </form>
+
+                <Link className='link' to={`/ver`}>Volver</Link>
+            </div>
+        </div>
     );
 };
 

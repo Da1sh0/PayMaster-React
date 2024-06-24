@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Asegúrate de importar Link
-
+import { Link } from 'react-router-dom';
+import '../../styles/index.css';
 
 const Crear = () => {
     const [numeroIdentificacion, setNumeroIdentificacion] = useState("");
@@ -74,70 +74,72 @@ const Crear = () => {
     };
 
     return (
-        <>
-            <h1>Formulario de Registro de Usuarios</h1>
-            <form onSubmit={handleSubmit}>
+        <div className='body_menu'>
+            <div className='contenedor_formulario'>
+                <p id='titulo'>Formulario de Registro de Usuarios</p>
+                <form className='form' onSubmit={handleSubmit}>
 
-                <label>Numero de documento </label>
-                <input type="text" value={numeroIdentificacion} placeholder="123456789" onChange={(e) => setNumeroIdentificacion(e.target.value)} required/>
-                
-                <label> Nombre Completo </label>
-                <input type="text"value={primerNombre}placeholder="Primer Nombre"onChange={(e) => setPrimerNombre(e.target.value)} required />
-                <input type="text" value={segundoNombre} placeholder="Segundo Nombre" onChange={(e) => setSegundoNombre(e.target.value)} />
-                <input type="text"  value={primerApellido} placeholder="Primer Apellido" onChange={(e) => setPrimerApellido(e.target.value)} required />
-                <input type="text" value={segundoApellido} placeholder="Segundo Apellido" onChange={(e) => setSegundoApellido(e.target.value)} />
-                
-                <label> Estado Civil </label>
-                <select value={estadoCivil} onChange={(e) => setEstadoCivil(e.target.value)} required >
-                    <option value="">Seleccione Estado Civil</option>
-                    <option value="SOLTERO">Soltero/a</option>
-                    <option value="CASADO">Casado/a</option>
-                    <option value="DIVORCIADO">Divorciado/a</option>
-                    <option value="VIUDO">Viudo/a</option>
-                </select>
+                    <label>Numero de documento </label>
+                    <input type="text" value={numeroIdentificacion} placeholder="123456789" onChange={(e) => setNumeroIdentificacion(e.target.value)} required/>
+                    
+                    <label> Nombre Completo </label>
+                    <input type="text"value={primerNombre}placeholder="Primer Nombre"onChange={(e) => setPrimerNombre(e.target.value)} required />
+                    <input type="text" value={segundoNombre} placeholder="Segundo Nombre" onChange={(e) => setSegundoNombre(e.target.value)} />
+                    <input type="text"  value={primerApellido} placeholder="Primer Apellido" onChange={(e) => setPrimerApellido(e.target.value)} required />
+                    <input type="text" value={segundoApellido} placeholder="Segundo Apellido" onChange={(e) => setSegundoApellido(e.target.value)} />
+                    
+                    <label> Estado Civil </label>
+                    <select value={estadoCivil} onChange={(e) => setEstadoCivil(e.target.value)} required >
+                        <option value="">Seleccione Estado Civil</option>
+                        <option value="SOLTERO">Soltero/a</option>
+                        <option value="CASADO">Casado/a</option>
+                        <option value="DIVORCIADO">Divorciado/a</option>
+                        <option value="VIUDO">Viudo/a</option>
+                    </select>
 
-                <label> Tipo de Documento </label>
-                <select value={tipoDocumento} onChange={(e) => setTipoDocumento(e.target.value)} required>
-                    <option value="">Seleccione Tipo de Documento</option>
-                    <option value="Cc">Cédula de ciudadanía</option>
-                    <option value="Ce">Cédula de extranjería</option>
-                    <option value="Passport">Pasaporte</option>
-                </select>
+                    <label> Tipo de Documento </label>
+                    <select value={tipoDocumento} onChange={(e) => setTipoDocumento(e.target.value)} required>
+                        <option value="">Seleccione Tipo de Documento</option>
+                        <option value="Cc">Cédula de ciudadanía</option>
+                        <option value="Ce">Cédula de extranjería</option>
+                        <option value="Passport">Pasaporte</option>
+                    </select>
 
-                <label> Correo Electronico </label>
-                <input type="email" value={correo} placeholder="ejemplo@ejemplo.com" onChange={(e) => setCorreo(e.target.value)} required />
-                
-                <label> celular </label>
-                <input type="tel" value={celular} placeholder="3123456789" onChange={(e) => setCelular(e.target.value)} required />
-                
-                <label> Gnero </label>
-                <select value={genero} onChange={(e) => setGenero(e.target.value)} required>
-                    <option value="">Seleccione Género</option>
-                    <option value="M">Masculino</option>
-                    <option value="F">Femenino</option>
-                    <option value="O">Otro</option>
-                    <option value="P">Prefiero no decir</option>
-                </select>
+                    <label> Correo Electronico </label>
+                    <input type="email" value={correo} placeholder="ejemplo@ejemplo.com" onChange={(e) => setCorreo(e.target.value)} required />
+                    
+                    <label> celular </label>
+                    <input type="tel" value={celular} placeholder="3123456789" onChange={(e) => setCelular(e.target.value)} required />
+                    
+                    <label> Gnero </label>
+                    <select value={genero} onChange={(e) => setGenero(e.target.value)} required>
+                        <option value="">Seleccione Género</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                        <option value="O">Otro</option>
+                        <option value="P">Prefiero no decir</option>
+                    </select>
 
-                <label> Fecha de Nacimiento </label>
-                <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} required />
+                    <label> Fecha de Nacimiento </label>
+                    <input type="date" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} required />
 
-                <label> Fecha de Expedicion del Documento </label>
-                <input type="date" value={fechaExpDocumento} onChange={(e) => setFechaExpDocumento(e.target.value)} required />
-                
-                <label> Fecha de Ingreso </label>
-                <input type="date" value={fechaIngreso} onChange={(e) => setFechaIngreso(e.target.value)} />
+                    <label> Fecha de Expedicion del Documento </label>
+                    <input type="date" value={fechaExpDocumento} onChange={(e) => setFechaExpDocumento(e.target.value)} required />
+                    
+                    <label> Fecha de Ingreso </label>
+                    <input type="date" value={fechaIngreso} onChange={(e) => setFechaIngreso(e.target.value)} />
 
-                <label> Foto de Perfil </label>
-                <input type="file"onChange={handleFileChange}/>
+                    <label> Foto de Perfil </label>
+                    <input type="file"onChange={handleFileChange}/>
 
-                <button type="submit">Crear Usuario</button>
-                
-                <div className="message">{message ? <p>{message}</p> : null}</div>
-            </form>
-            <Link to={`/ver`}>Volver</Link>
+                    <button type="submit">Crear Usuario</button>
+                    
+                    <div className="message">{message ? <p>{message}</p> : null}</div>
+                </form>
+                <Link className='link' to={`/ver`}>Volver</Link>
+            </div>
 
-        </>
+        </div>
     );
 };
 
