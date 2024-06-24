@@ -439,7 +439,7 @@ tr:hover {
 
 .form input[type="text"],
 .form input[type="email"],
-.form input[type="tel"],
+.form input[type="number"],
 .form select,
 .form input[type="date"],
 .form input[type="file"] {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 function Editar() {
   const { numero_identificacion } = useParams();
@@ -16,6 +15,7 @@ function Editar() {
     tipo_documento: '',
     correo: '',
     celular: '',
+    salairo_base: '',
     genero: '',
     fecha_nacimiento: '',
     fecha_exp_documento: '',
@@ -25,8 +25,12 @@ function Editar() {
   useEffect(() => {
     const cargarUsuario = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/independientes/indeindependienterest/${numero_identificacion}/`);
-        setUsuario(res.data);
+        const res = await fetch(`http://127.0.0.1:8000/independientes/indeindependienterest/${numero_identificacion}/`);
+        if (!res.ok) {
+          throw new Error('Error al cargar el usuario');
+        }
+        const data = await res.json();
+        setUsuario(data);
       } catch (error) {
         console.error('Error al cargar el usuario:', error);
       }
@@ -45,7 +49,20 @@ function Editar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://127.0.0.1:8000/independientes/indeindependienterest/${usuario.numero_identificacion}/`, usuario);
+      const res = await fetch(`http://localhost:8000/independientes/indeindependienterest/${numero_identificacion}/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(usuario),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error('Error al actualizar el usuario:', errorData);
+        throw new Error('Error al actualizar el usuario');
+      }
+
       navigate('/ver');
     } catch (error) {
       console.error('Error al actualizar el usuario:', error);
@@ -87,7 +104,10 @@ function Editar() {
           <input type="email" name="correo" value={usuario.correo} onChange={handleChange} />
 
           <label>Celular:</label>
-          <input type="text" name="celular" value={usuario.celular} onChange={handleChange} />
+          <input type="number" name="celular" value={usuario.celular} onChange={handleChange} />
+
+          <label> Salario Base </label>
+          <input type="number" name="salairo_base" value={usuario.salairo_base} onChange={handleChange} required />
 
           <label>Género:</label>
           <select name="genero" value={usuario.genero} onChange={handleChange} required>
@@ -106,8 +126,6 @@ function Editar() {
 
           <label>Fecha de Ingreso:</label>
           <input type="date" name="fecha_ingreso" value={usuario.fecha_ingreso} onChange={handleChange} />
-
-          <input type="hidden" name="numero_identificacion" value={usuario.numero_identificacion} />
 
           <button type="submit">Guardar</button>
         </form>

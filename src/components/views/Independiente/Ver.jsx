@@ -21,7 +21,7 @@ function Ver() {
   return (
     <div className='body_menu'>
       <div className='contenedor_tablas'>
-        <h1 id='titulo'>Empleados registrados </h1>
+        <h1 id='titulo'>Independientes registrados </h1>
         <table>
           <thead>
             <tr>
@@ -31,6 +31,7 @@ function Ver() {
               <th>Tipo de Documento</th>
               <th>Correo</th>
               <th>Celular</th>
+              <th>Salario</th>
               <th>Género</th>
               <th>Fecha de Nacimiento</th>
               <th>Fecha de Expedición del Documento</th>
@@ -48,6 +49,7 @@ function Ver() {
                 <td>{item.tipo_documento}</td>
                 <td>{item.correo}</td>
                 <td>{item.celular}</td>
+                <td>{item.salairo_base}</td>
                 <td>{item.genero}</td>
                 <td>{item.fecha_nacimiento}</td>
                 <td>{item.fecha_exp_documento}</td>

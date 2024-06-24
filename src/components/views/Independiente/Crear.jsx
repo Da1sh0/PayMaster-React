@@ -12,6 +12,7 @@ const Crear = () => {
     const [tipoDocumento, setTipoDocumento] = useState("");
     const [correo, setCorreo] = useState("");
     const [celular, setCelular] = useState("");
+    const [salarioBase, setSalarioBase] = useState("");
     const [genero, setGenero] = useState("");
     const [fechaNacimiento, setFechaNacimiento] = useState("");
     const [fechaExpDocumento, setFechaExpDocumento] = useState("");
@@ -31,6 +32,7 @@ const Crear = () => {
         formData.append("tipo_documento", tipoDocumento);
         formData.append("correo", correo);
         formData.append("celular", celular);
+        formData.append("salairo_base", salarioBase);
         formData.append("genero", genero);
         formData.append("fecha_nacimiento", fechaNacimiento);
         formData.append("fecha_exp_documento", fechaExpDocumento);
@@ -53,6 +55,7 @@ const Crear = () => {
                 setTipoDocumento("");
                 setCorreo("");
                 setCelular("");
+                setSalarioBase("");
                 setGenero("");
                 setFechaNacimiento("");
                 setFechaExpDocumento("");
@@ -109,7 +112,10 @@ const Crear = () => {
                     <input type="email" value={correo} placeholder="ejemplo@ejemplo.com" onChange={(e) => setCorreo(e.target.value)} required />
                     
                     <label> celular </label>
-                    <input type="tel" value={celular} placeholder="3123456789" onChange={(e) => setCelular(e.target.value)} required />
+                    <input type="number" value={celular} placeholder="3123456789" onChange={(e) => setCelular(e.target.value)} required />
+                    
+                    <label> Salario Base </label>
+                    <input type="number" value={salarioBase} placeholder="1300000" onChange={(e) => setSalarioBase(e.target.value)} required />
                     
                     <label> Gnero </label>
                     <select value={genero} onChange={(e) => setGenero(e.target.value)} required>
