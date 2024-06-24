@@ -59,6 +59,8 @@ function Ver() {
                   <Link className='link_table' to={`/editar/${item.numero_identificacion}`}>Editar</Link>
                    | 
                   <Link className='link_table' to={`/eliminar/${item.numero_identificacion}`}>Eliminar</Link>
+                   | 
+                  <Link className='link_table' to={`/calcular/${item.numero_identificacion}`}>Calcular</Link>
                 </td>
               </tr>
             ))}
