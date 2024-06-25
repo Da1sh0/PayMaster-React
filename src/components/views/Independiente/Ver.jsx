@@ -9,7 +9,7 @@ function Ver() {
   useEffect(() => {
     const cargarUsuarios = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:8000/independientes/indeindependienterest/');
+        const res = await axios.get('http://127.0.0.1:8000/independientes/inde/independienterest/');
         setUsuario(res.data);
       } catch (error) {
         console.error('Error al cargar usuarios:', error);

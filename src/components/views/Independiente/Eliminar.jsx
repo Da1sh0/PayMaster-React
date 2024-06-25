@@ -13,7 +13,7 @@ const Eliminar = () => {
         e.preventDefault();
 
         try {
-            let res = await fetch(`http://127.0.0.1:8000/independientes/indeindependienterest/${numero_identificacion}/`, {
+            let res = await fetch(`http://127.0.0.1:8000/independientes/inde/independienterest/${numero_identificacion}/`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"

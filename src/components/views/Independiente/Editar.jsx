@@ -25,7 +25,7 @@ function Editar() {
   useEffect(() => {
     const cargarUsuario = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/independientes/indeindependienterest/${numero_identificacion}/`);
+        const res = await fetch(`http://127.0.0.1:8000/independientes/inde/independienterest/${numero_identificacion}/`);
         if (!res.ok) {
           throw new Error('Error al cargar el usuario');
         }
@@ -49,7 +49,7 @@ function Editar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:8000/independientes/indeindependienterest/${numero_identificacion}/`, {
+      const res = await fetch(`http://localhost:8000/independientes/inde/independienterest/${numero_identificacion}/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

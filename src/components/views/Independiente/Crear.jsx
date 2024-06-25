@@ -40,7 +40,7 @@ const Crear = () => {
         formData.append("imagen", imagen);
 
         try {
-            let res = await fetch("http://127.0.0.1:8000/independientes/indeindependienterest/", {
+            let res = await fetch("http://127.0.0.1:8000/independientes/inde/independienterest/", {
                 method: "POST",
                 body: formData,
             });
