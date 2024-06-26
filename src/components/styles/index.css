@@ -368,10 +368,12 @@ input[type=number]::-webkit-inner-spin-button {
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.7);
     border-radius: 5px;
     background-color: var(--colorFondo);
+    overflow-x: auto;
 }
 table {
     margin: 20px;
     border-collapse: collapse;
+    width: 100%;
     
 }
 
@@ -412,6 +414,38 @@ tr:hover {
     background-color: var(--colorAcento);
 }
 
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block; /* Hacer que todos los elementos sean bloques */
+    }
+
+    tr {
+        margin-bottom: 15px; /* Añadir margen entre filas */
+    }
+
+    th {
+        position: absolute; /* Posicionar cabeceras de manera absoluta */
+        top: -9999px;
+        left: -9999px;
+    }
+
+    td {
+        border: none;
+        position: relative; /* Posicionar celdas relativas */
+        padding-left: 50%; /* Añadir espacio para las cabeceras */
+    }
+
+    td:before {
+        content: attr(data-label); /* Mostrar la cabecera como contenido antes de cada celda */
+        position: absolute;
+        left: 0;
+        width: 50%; /* Ancho para las cabeceras */
+        padding-left: 15px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+}
 
 /* ----- FORMULARIOS ----- */
 .contenedor_formulario{
@@ -466,7 +500,7 @@ tr:hover {
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
 }
 
-.form button:hover {
+.form button:hover{
     color: white;
     background-color: var(--colorAcento);
     transition: background-color 0.3s ease;
@@ -479,7 +513,6 @@ tr:hover {
     color: #333;
 }
 
-/* Estilos adicionales específicos */
 .message p {
     margin: 0;
 }
@@ -489,6 +522,33 @@ tr:hover {
     form {
         padding: 10px;
     }
+}
+/* ----- CALCULOS ----- */
+.calculos p{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    color: var(--colorTexto);
+
+}
+.botoon {
+    text-decoration: none;
+    color: white;
+    background-color: #4A90E2;
+    border: 0;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+}
+
+.botoon:hover {
+    color: white;
+    background-color: var(--colorAcento);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 /* ----- GLOBAL ----- */

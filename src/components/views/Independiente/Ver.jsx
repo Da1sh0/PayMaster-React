@@ -54,13 +54,13 @@ function Ver() {
                 <td>{item.fecha_nacimiento}</td>
                 <td>{item.fecha_exp_documento}</td>
                 <td>{item.fecha_ingreso}</td>
-                <td><img src={item.imagen} alt={item.primer_nombre} width="100px" /></td>
+                <td><img src={`http://127.0.0.1:8000${item.imagen}`} alt={item.primer_nombre} width="100px" /></td>
                 <td>
                   <Link className='link_table' to={`/editar/${item.numero_identificacion}`}>Editar</Link>
                    | 
                   <Link className='link_table' to={`/eliminar/${item.numero_identificacion}`}>Eliminar</Link>
                    | 
-                  <Link className='link_table' to={`/calcular/${item.numero_identificacion}`}>Calcular</Link>
+                  <Link className='link_table' to={`/CalcularAportes/${item.numero_identificacion}`}>Calcular</Link>
                 </td>
               </tr>
             ))}

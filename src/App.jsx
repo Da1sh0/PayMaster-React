@@ -10,6 +10,7 @@ import Ver from './components/views/Independiente/Ver';
 import Editar from './components/views/Independiente/Editar';
 import Crear from './components/views/Independiente/Crear';
 import Eliminar from './components/views/Independiente/Eliminar';
+import CalcularAportes from './components/views/Independiente/CalcularAportes';
 
 // Dependientes
 // import Login_In_Dependiente from './components/views/Dependiente/Login_In';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/ver' element={<Ver />} />
         <Route path='/editar/:numero_identificacion' element={<Editar />} />
         <Route path='/eliminar/:numero_identificacion' element={<Eliminar />} />
+        <Route path='/CalcularAportes/:numero_identificacion' element={<CalcularAportes />} />
         <Route path='/crear' element={<Crear />} />
       </Routes>
     </Router>
